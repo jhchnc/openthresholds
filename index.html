@@ -3,6 +3,10 @@
     
   </head>
   <body>
-	<p>hello2</p>
+	<p>hello3</p>
+  {% assign posts = site.posts %}
+  {% for post in posts %}
+      title: {{post.title}}
+  {% endfor %}
   </body>
 </html>
