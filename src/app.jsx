@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './styles/app.scss'
 
 const Foo = (props) => {
@@ -7,9 +6,7 @@ const Foo = (props) => {
 	)
 }
 
-export default App = () => {
-	const [count, setCount] = useState(0)
-	
+export default function App() {
 	return (
 		<div>
 			<Foo words="This was built through CICD." />
