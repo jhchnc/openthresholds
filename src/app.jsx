@@ -3,16 +3,16 @@ import './styles/app.scss'
 
 const Foo = (props) => {
 	return (
-		<strong>Bar</strong>
+		<strong>{props.words}</strong>
 	)
 }
 
-export default function App() {
+export default App = () => {
 	const [count, setCount] = useState(0)
 	
 	return (
 		<div>
-			<Foo />
+			<Foo words="This was built through CICD." />
 		</div>
 	)
 }
