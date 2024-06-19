@@ -1,10 +1,45 @@
-Title: Thresholds
-Issues:
-  - 1
-    - "Hello World"
-    - "An Ode to Mom"
-    - "I'm going to Disneyworld!"
-  - 2
-    - "Father's Day is next week"
-    - "No one cares"
-    - "How is your boat, still in the driveway?"
+title: Thresholds
+issues:
+  - slug: curious
+    title: A Curious Invention
+    articles:
+      - title: Hello, World!
+        author: Bell Laboratories
+        file: hello_world.html
+        thumbnail: Yggdrasil.jpg
+        slug: hello
+      - title: Page 2
+        author: Sample Author
+        thumbnail: images.jpeg
+        left:
+          file: 2.html
+        right:
+          file: 3.html
+        thumbAddClass:
+          - target: hello
+            className: thumb_hello_world
+          - target: disney
+            className: thumb_disney
+        slug: page_2
+      - title: I'm going to Disney
+        slug: disney
+        left: null
+        right: 
+          file: disney.html
+  - slug: shark
+    title: "Issue #2"
+    articles:
+      - title: Death Before Defeat
+        author: Imaginary Ron Howard
+        file: these_feet.html
+        thumbnail: image.png
+  - slug: about
+    title: Not An Issue
+    articles: 
+      - title: About Us
+        file: about.html
+
+navigation:
+  - disney
+  - curious
+  - hello
