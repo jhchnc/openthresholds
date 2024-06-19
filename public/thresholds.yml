@@ -5,9 +5,12 @@ issues:
     articles:
       - title: Hello, World!
         author: Bell Laboratories
-        file: hello_world.html
         thumbnail: Yggdrasil.jpg
         slug: hello
+        left:
+          file: hello_world_1.html
+        right:
+          file: hello_world_2.html
       - title: Page 2
         author: Sample Author
         thumbnail: images.jpeg
@@ -33,11 +36,19 @@ issues:
         author: Imaginary Ron Howard
         file: these_feet.html
         thumbnail: image.png
+        left:
+          file: shark1.html
+        right:
+          file: shark2.html
   - slug: about
     title: Not An Issue
     articles: 
       - title: About Us
         file: about.html
+        left:
+          file: about1.html
+        right:
+          file: about2.html
 
 navigation:
   - disney
