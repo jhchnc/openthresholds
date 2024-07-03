@@ -4,7 +4,7 @@ issues:
     title: The Paperology Book
     articles:
       - title: Introduction
-        author: 
+        author: test
         thumbnail: introduction.jpg
         slug: intro
         left:
