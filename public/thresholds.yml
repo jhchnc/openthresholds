@@ -1,56 +1,208 @@
-title: Thresholds
+title: thresholds
 issues:
-  - slug: curious
-    title: A Curious Invention
+  - slug: paperology
+    title: The Paperology Book
     articles:
-      - title: Hello, World!
-        author: Bell Laboratories
-        thumbnail: Yggdrasil.jpg
-        slug: hello
+      - title: Introduction
+        author: 
+        thumbnail: introduction.jpg
+        slug: intro
         left:
-          file: hello_world_1.html
+          file: intro-left.html
         right:
-          file: hello_world_2.html
-      - title: Page 2
-        author: Sample Author
-        thumbnail: images.jpeg
+          file: intro-right.html
+      - title: 
+        author: Rebecca Rouse
+        thumbnail: rouse.jpeg
+        slug: rouse
         left:
-          file: 2.html
+          file: rouse-left.html
         right:
-          file: 3.html
+          file: rouse-right.html
         thumbAddClass:
-          - target: hello
-            className: thumb_hello_world
-          - target: disney
-            className: thumb_disney
-        slug: page_2
-      - title: I'm going to Disney
-        slug: disney
-        left: null
-        right: 
-          file: disney.html
-  - slug: shark
-    title: "Issue #2"
-    articles:
-      - title: Death Before Defeat
-        author: Imaginary Ron Howard
-        file: these_feet.html
-        thumbnail: image.png
+          - target: 
+            className: 
+          - target: 
+            className: 
+      - title: 
+        author: Anna Weichselbraun
+        thumbnail: weichselbraun.jpeg
+        slug: weichselbraun
         left:
-          file: shark1.html
+          file: weichselbraun-left.html
         right:
-          file: shark2.html
-  - slug: about
-    title: Not An Issue
-    articles: 
-      - title: About Us
-        file: about.html
+          file: weichselbraun-right.html
+      - title: 
+        author: Sabina Fazli
+        thumbnail: fazli.jpeg
+        slug: fazli
         left:
-          file: about1.html
+          file: fazli-left.html
         right:
-          file: about2.html
-
+          file: fazli-right.html
+      - title: 
+        author: Iris Brahms
+        thumbnail: brahms.jpeg
+        slug: brahms
+        left:
+          file: brahms-left.html
+        right:
+          file: brahms-right.html
+      - title: 
+        author: Olin Moctezuma
+        thumbnail: moctezuma.jpeg
+        slug: moctezuma
+        left:
+          file: moctezuma-left.html
+        right:
+          file: moctezuma-right.html
+      - title: 
+        author: Georgina Wilson
+        thumbnail: wilson.jpeg
+        slug: wilson
+        left:
+          file: wilson-left.html
+        right:
+          file: wilson-right.html
+      - title: 
+        author: Mike Sweeney
+        thumbnail: sweeney.jpeg
+        slug: sweeney
+        left:
+          file: sweeney-left.html
+        right:
+          file: sweeney-right.html
+      - title: 
+        author: Jenifer Monger
+        thumbnail: monger.jpeg
+        slug: monger
+        left:
+          file: monger-left.html
+        right:
+          file: monger-right.html
+      - title: 
+        author: Elana Herzog
+        thumbnail: herzog.jpeg
+        slug: herzog
+        left:
+          file: herzog-left.html
+        right:
+          file: herzog-right.html
+      - title: 
+        author: Deidre Lynch
+        thumbnail: lynch.jpeg
+        slug: lynch
+        left:
+          file: lynch-left.html
+        right:
+          file: lynch-right.html
+      - title: 
+        author: Catriona Macleod
+        thumbnail: macleod.jpeg
+        slug: macleod
+        left:
+          file: macleod-left.html
+        right:
+          file: macleod-right.html
+      - title: 
+        author: Michael Stamm
+        thumbnail: stamm.jpeg
+        slug: stamm
+        left:
+          file: stamm-left.html
+        right:
+          file: stamm-right.html
+      - title: 
+        author: Charmaine Cadeau
+        thumbnail: cadeau.jpeg
+        slug: cadeau
+        left:
+          file: cadeau-left.html
+        right:
+          file: cadeau-right.html
+      - title: 
+        author: Maureen Flint
+        thumbnail: flint.jpeg
+        slug: flint
+        left:
+          file: flint-left.html
+        right:
+          file: flint-right.html
+      - title: 
+        author: Will Mari
+        thumbnail: mari.jpeg
+        slug: mari
+        left:
+          file: mari-left.html
+        right:
+          file:  mari-right.html
+      - title: 
+        author: Diana Anselmo
+        thumbnail: anselmo.jpeg
+        slug: anselmo
+        left:
+          file: anselmo-left.html
+        right:
+          file: anselmo-right.html
+      - title: 
+        author: Christina Corfield
+        thumbnail: corfield.jpeg
+        slug: corfield
+        left:
+          file: corfield-left.html
+        right:
+          file: corfield-right.html
+      - title: 
+        author: Jay Sylvestre
+        thumbnail: sylvestre.jpeg
+        slug: sylvestre
+        left:
+          file: sylvestre-left.html
+        right:
+          file: sylvestre-right.html
+      - title: 
+        author: Ilinca Iurascu
+        thumbnail: iurascu.jpeg
+        slug: iurascu
+        left:
+          file: iurascu-left.html
+        right:
+          file: iurascu-right.html
+      - title: 
+        author: Jim Drobnick & Jennifer Fisher
+        thumbnail: drobnick-fisher.jpeg
+        slug: drobnick-fisher
+        left:
+          file: drobnick-fisher-left.html
+        right:
+          file: drobnick-fisher-right.html
+      - title: 
+        author: Alysse Kunshinski
+        thumbnail: kunshinski.jpeg
+        slug: kunshinski
+        left:
+          file: kunshinski-left.html
+        right:
+          file: kunshinski-right.html
 navigation:
-  - disney
-  - curious
-  - hello
+  - rouse
+  - moctezuma
+  - anselmo
+  - flint
+  - wilson
+  - corfield
+  - sweeney
+  - stamm
+  - lynch
+  - monger
+  - herzog
+  - brahms
+  - fazli
+  - sylvestre
+  - macleod
+  - cadeau
+  - mari
+  - weichselbraun
+  - drobnick-fisher
+  - iurascu
+  - kushinski
