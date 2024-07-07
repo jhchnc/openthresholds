@@ -3,6 +3,32 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 
+const Spread = (props) => {
+    console.log(props)
+    return (
+        <div className="spread">
+            <h3>{props.title}</h3>
+            <h5>{props.author}</h5>
+            {props.page_left != null && 
+                <div className="page page-left">
+                    <Page 
+                        file={props.page_left} 
+                        slug={props.slug}
+                    />
+                </div>
+            }
+            {props.page_right != null && 
+                <div className="page page-right">
+                    <Page 
+                        file={props.page_right} 
+                        slug={props.slug}
+                    />
+                </div>
+            }
+        </div>
+    )
+}
+
 const Page = (props) => {
     const [page_html, setPageHtml] = useState("")
 	const [isLoading, setLoading] = useState(true)
@@ -19,11 +45,8 @@ const Page = (props) => {
 
 	if (isLoading) return <>Loading...</>
 	return <>
-        <h3>{props.title}</h3>
-        <h5>{props.author}</h5>
         <div>{parse(page_html)}</div>
     </>
-
 }
 
 const Contents = (props) => {
@@ -31,29 +54,31 @@ const Contents = (props) => {
 
     if (!issue) return <></>
 
-    const issue_title = issue[0]["title"]
-    const issue_pages = issue[0]["pages"]
+    const title = issue[0]["title"]
+    const spreads = issue[0]["articles"]
 	return (
 		<div>
             <h1>{props.table_of_contents["title"]}</h1>
-            <h2>{issue_title}</h2>
+            <h2>{title}</h2>
             <div id="pages">
-                {issue_pages.map((page, i) => {
+                {spreads.map((page, i) => {
+                    const page_left = page.left == null ? null : page.left.file
+                    const page_right = page.right == null ? null : page.right.file
                     return (
-                        <div key={i} className="page" id={"page-" + page.file}>
-                            <Page 
+                        <div key={i} className="spread-container" id={"spread-" + page.file}>
+                            <Spread
                                 slug={props.slug} 
-                                file={page.file} 
                                 title={page.title} 
                                 author={page.author}
+                                page_left={page_left}
+                                page_right={page_right}
                             />
                         </div>
                     )
                 })}			
             </div>
-
 			<ul id="pages-menu">
-				{issue_pages.map((page, i) => {
+				{spreads.map((page, i) => {
 					return (
 						<li key={i}>
                             <a href="#">
