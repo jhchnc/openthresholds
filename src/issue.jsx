@@ -4,11 +4,8 @@ import parse from 'html-react-parser'
 
 
 const Spread = (props) => {
-    console.log(props)
     return (
         <div className="spread">
-            <h3>{props.title}</h3>
-            <h5>{props.author}</h5>
             {props.page_left != null && 
                 <div className="page page-left">
                     <Page 
@@ -60,12 +57,14 @@ const Contents = (props) => {
 		<div>
             <h1>{props.table_of_contents["title"]}</h1>
             <h2>{title}</h2>
-            <div id="pages">
+            <div className="spreads">
                 {spreads.map((page, i) => {
                     const page_left = page.left == null ? null : page.left.file
                     const page_right = page.right == null ? null : page.right.file
                     return (
                         <div key={i} className="spread-container" id={"spread-" + page.file}>
+                            <h3>{page.title}</h3>
+                            <h5>{page.author}</h5>
                             <Spread
                                 slug={props.slug} 
                                 title={page.title} 
