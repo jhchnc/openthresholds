@@ -1,10 +1,10 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: 'Roboto Slab', serif;
+  line-height: 1.42857143;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: #000;
+  color: #333;
   background-color: #fff;
 
   font-synthesis: none;
@@ -50,11 +50,18 @@ iframe
       border: 1px solid red;
       display: flex;
       flex-direction: row;
+      padding:7%;
       .page {
-        border: 1px solid #555;
+      //  border: 1px solid #b0b0b0;
         flex: 50%;
         width: 50%;
         // width: max-content;
+      }
+      .page-left{
+        margin-right: 3%;
+      }
+      .page-right{
+        margin-left: 3%;
       }
     }  
   }  
@@ -66,4 +73,38 @@ iframe
       max-width: 100px;
     }
   }
+}
+
+.header{
+  color: #fff;
+  text-transform:uppercase;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  line-height:1;
+  h3{
+    background-color: #f0f;
+    display: inline-block;
+    padding: 10px 35px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 19px;
+    word-spacing: .1em;
+    font-weight: 700;
+    margin:0;
+    font-family: 'Roboto Slab', serif;
+  }
+  small {
+    font-weight: 400;
+    display: block;
+    padding: 5px 0 0 0;
+  }
+}
+
+img {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:15px;
+  margin-bottom:15px;
 }

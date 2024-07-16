@@ -63,8 +63,11 @@ const Contents = (props) => {
                     const page_right = page.right == null ? null : page.right.file
                     return (
                         <div key={i} className="spread-container" id={"spread-" + page.file}>
-                            <h3>{page.title}</h3>
-                            <h5>{page.author}</h5>
+                            <div class="header">
+                            <h3>{page.title} <br/> 
+                            <small>{page.author}</small>
+                            </h3>
+                            </div>
                             <Spread
                                 slug={props.slug} 
                                 title={page.title} 
