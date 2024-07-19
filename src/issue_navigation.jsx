@@ -2,8 +2,6 @@ import { Component } from 'react'
 
 
 function getCurrentPostion(page_slug, spreads) {
-    console.log(spreads)
-    console.log(page_slug)
     let positions = spreads.map((page, i) => {
         if (page.slug == page_slug) {
             return i

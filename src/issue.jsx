@@ -2,6 +2,7 @@ import { Component, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 import IssueNavigation from './issue_navigation'
+import 'bootstrap-icons/font/bootstrap-icons.scss'
 
 
 const Page = (props) => {
@@ -34,7 +35,6 @@ class Spread extends Component {
                         <small>{this.props.author}</small>
                     </h3>
                 </div>
-
                 {this.props.page_left != null && 
                     <div className="page page-left">
                         <Page 
@@ -78,6 +78,21 @@ class Contents extends Component {
         const spreads = issue[0]["articles"]
         return (
             <>
+                <div className="turn-pages">
+                    <a className="bi bi-chevron-left" onClick={() => {
+                        const current_left = document.getElementsByClassName("spreads")[0].style.left
+                        const left = parseInt(current_left) + 50
+                        document.getElementsByClassName("spreads")[0].style.left = left + "%"
+                    }}></a>
+                    <a className="bi bi-chevron-right" onClick={() => {
+                        const current_left = document.getElementsByClassName("spreads")[0].style.left
+                            ? document.getElementsByClassName("spreads")[0].style.left
+                            : 0
+                        const left = parseInt(current_left) - 50
+                        document.getElementsByClassName("spreads")[0].style.left = left + "%"
+                    }}></a>
+                </div>
+
                 <div className="spreads">
                     {spreads.map((page, i) => {
                         const page_left = page.left == null ? null : page.left.file
