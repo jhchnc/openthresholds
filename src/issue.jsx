@@ -81,14 +81,23 @@ class Contents extends Component {
                 <div className="turn-pages">
                     <a className="bi bi-chevron-left" onClick={() => {
                         const current_left = document.getElementsByClassName("spreads")[0].style.left
-                        const left = parseInt(current_left) + 50
+                            ? document.getElementsByClassName("spreads")[0].style.left
+                            : 0
+                        let left = parseInt(current_left) + 50
+                        if (parseInt(current_left) == 0) {
+                            left = -((spreads.length-1) * 100) - 50
+                        }
+                        console.log(left)
                         document.getElementsByClassName("spreads")[0].style.left = left + "%"
                     }}></a>
                     <a className="bi bi-chevron-right" onClick={() => {
                         const current_left = document.getElementsByClassName("spreads")[0].style.left
                             ? document.getElementsByClassName("spreads")[0].style.left
                             : 0
-                        const left = parseInt(current_left) - 50
+                        let left = parseInt(current_left) - 50
+                        if (parseInt(current_left) < -((spreads.length-1) * 100)) {
+                            left = 0
+                        }
                         document.getElementsByClassName("spreads")[0].style.left = left + "%"
                     }}></a>
                 </div>
