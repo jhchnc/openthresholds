@@ -3,14 +3,14 @@ issues:
   - slug: paperology
     title: The Paperology Book
     articles:
-      - title: Introduction
-        author: test
-        thumbnail: introduction.jpg
-        slug: intro
-        left:
-          file: intro-left.html
-        right:
-          file: intro-right.html
+      # - title: Introduction
+      #   author: test
+      #   thumbnail: introduction.jpg
+      #   slug: intro
+      #   left:
+      #     file: intro-left.html
+      #   right:
+      #     file: intro-right.html
       - title: Rouse Article
         author: Rebecca Rouse
         thumbnail: rouse.jpeg
