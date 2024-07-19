@@ -3,15 +3,15 @@ issues:
   - slug: paperology
     title: The Paperology Book
     articles:
-      - title: Introduction
-        author: test
-        thumbnail: introduction.jpg
-        slug: intro
-        left:
-          file: intro-left.html
-        right:
-          file: intro-right.html
-      - title: 
+      # - title: Introduction
+      #   author: test
+      #   thumbnail: introduction.jpg
+      #   slug: intro
+      #   left:
+      #     file: intro-left.html
+      #   right:
+      #     file: intro-right.html
+      - title: Rouse Article
         author: Rebecca Rouse
         thumbnail: rouse.jpeg
         slug: rouse
@@ -32,7 +32,7 @@ issues:
           file: weichselbraun-left.html
         right:
           file: weichselbraun-right.html
-      - title: 
+      - title: In My Coat Pockets
         author: Sabina Fazli
         thumbnail: fazli.jpeg
         slug: fazli
@@ -40,7 +40,7 @@ issues:
           file: fazli-left.html
         right:
           file: fazli-right.html
-      - title: 
+      - title: Papers for Drawing
         author: Iris Brahms
         thumbnail: brahms.jpeg
         slug: brahms
@@ -56,7 +56,7 @@ issues:
           file: moctezuma-left.html
         right:
           file: moctezuma-right.html
-      - title: 
+      - title: “And I in forme of paper speake to you”
         author: Georgina Wilson
         thumbnail: wilson.jpeg
         slug: wilson
@@ -64,7 +64,7 @@ issues:
           file: wilson-left.html
         right:
           file: wilson-right.html
-      - title: 
+      - title: Wings of the Mayfly
         author: Mike Sweeney
         thumbnail: sweeney.jpeg
         slug: sweeney
@@ -72,7 +72,7 @@ issues:
           file: sweeney-left.html
         right:
           file: sweeney-right.html
-      - title: 
+      - title: Remembering Through ‘Pictures of You’
         author: Jenifer Monger
         thumbnail: monger.jpeg
         slug: monger
@@ -80,7 +80,7 @@ issues:
           file: monger-left.html
         right:
           file: monger-right.html
-      - title: 
+      - title: Fleeting Thoughts on Ephemerality
         author: Elana Herzog
         thumbnail: herzog.jpeg
         slug: herzog
@@ -88,7 +88,7 @@ issues:
           file: herzog-left.html
         right:
           file: herzog-right.html
-      - title: 
+      - title: Daedalian Wings, Clipped
         author: Deidre Lynch
         thumbnail: lynch.jpeg
         slug: lynch
@@ -104,7 +104,7 @@ issues:
           file: macleod-left.html
         right:
           file: macleod-right.html
-      - title: 
+      - title: On Discoverability
         author: Michael Stamm
         thumbnail: stamm.jpeg
         slug: stamm
@@ -120,7 +120,7 @@ issues:
           file: cadeau-left.html
         right:
           file: cadeau-right.html
-      - title: 
+      - title: Self-portrait (Fall 2021)
         author: Maureen Flint
         thumbnail: flint.jpeg
         slug: flint
@@ -128,7 +128,7 @@ issues:
           file: flint-left.html
         right:
           file: flint-right.html
-      - title: 
+      - title: On Newspaper Ephemera and Paper Nostalgia
         author: Will Mari
         thumbnail: mari.jpeg
         slug: mari
@@ -136,7 +136,7 @@ issues:
           file: mari-left.html
         right:
           file:  mari-right.html
-      - title: 
+      - title: A Papery State of Mind
         author: Diana Anselmo
         thumbnail: anselmo.jpeg
         slug: anselmo
@@ -144,7 +144,7 @@ issues:
           file: anselmo-left.html
         right:
           file: anselmo-right.html
-      - title: 
+      - title: Immersed in Paper
         author: Christina Corfield
         thumbnail: corfield.jpeg
         slug: corfield
@@ -160,7 +160,7 @@ issues:
           file: sylvestre-left.html
         right:
           file: sylvestre-right.html
-      - title: 
+      - title: Playful Resistance
         author: Ilinca Iurascu
         thumbnail: iurascu.jpeg
         slug: iurascu
@@ -168,7 +168,7 @@ issues:
           file: iurascu-left.html
         right:
           file: iurascu-right.html
-      - title: 
+      - title: Kindly Deliver To...
         author: Jim Drobnick & Jennifer Fisher
         thumbnail: drobnick-fisher.jpeg
         slug: drobnick-fisher
@@ -176,7 +176,7 @@ issues:
           file: drobnick-fisher-left.html
         right:
           file: drobnick-fisher-right.html
-      - title: 
+      - title: Paper or Textile?
         author: Alysse Kunshinski
         thumbnail: kunshinski.jpeg
         slug: kunshinski

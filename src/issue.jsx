@@ -1,30 +1,8 @@
-import { useState, useEffect } from 'react'
+import { Component, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
+import IssueNavigation from './issue_navigation'
 
-
-const Spread = (props) => {
-    return (
-        <div className="spread">
-            {props.page_left != null && 
-                <div className="page page-left">
-                    <Page 
-                        file={props.page_left} 
-                        slug={props.slug}
-                    />
-                </div>
-            }
-            {props.page_right != null && 
-                <div className="page page-right">
-                    <Page 
-                        file={props.page_right} 
-                        slug={props.slug}
-                    />
-                </div>
-            }
-        </div>
-    )
-}
 
 const Page = (props) => {
     const [page_html, setPageHtml] = useState("")
@@ -46,62 +24,86 @@ const Page = (props) => {
     </>
 }
 
-const Contents = (props) => {
-    const issue = props.table_of_contents["issues"].filter(issue => issue["slug"] == props.slug)
+class Spread extends Component {
+    render() {
+        return (
+            <div className="spread">
+                <div className="header">
+                    <h3>
+                        {this.props.title}<br/> 
+                        <small>{this.props.author}</small>
+                    </h3>
+                </div>
 
-    if (!issue) return <></>
-
-    const title = issue[0]["title"]
-    const spreads = issue[0]["articles"]
-	return (
-		<div>
-            <h1>{props.table_of_contents["title"]}</h1>
-            <h2>{title}</h2>
-            <div className="spreads">
-                {spreads.map((page, i) => {
-                    const page_left = page.left == null ? null : page.left.file
-                    const page_right = page.right == null ? null : page.right.file
-                    return (
-                        <div key={i} className="spread-container" id={"spread-" + page.file}>
-                            <h3>{page.title}</h3>
-                            <h5>{page.author}</h5>
-                            <Spread
-                                slug={props.slug} 
-                                title={page.title} 
-                                author={page.author}
-                                page_left={page_left}
-                                page_right={page_right}
-                            />
-                        </div>
-                    )
-                })}			
+                {this.props.page_left != null && 
+                    <div className="page page-left">
+                        <Page 
+                            file={this.props.page_left} 
+                            slug={this.props.slug}
+                        />
+                    </div>
+                }
+                {this.props.page_right != null && 
+                    <div className="page page-right">
+                        <Page 
+                            file={this.props.page_right} 
+                            slug={this.props.slug}
+                        />
+                    </div>
+                }
             </div>
-			<ul id="pages-menu">
-				{spreads.map((page, i) => {
-					return (
-						<li key={i}>
-                            <a href="#">
-                                {page["title"]}<br />
-                                {page["thumbnail"] &&
-                                    <img src={"/issues/" + issue[0]["slug"] + "/" + page["thumbnail"]} alt={page["title"]} />
-                                }
-                            </a>
-						</li>
-					)
-				})}
-			</ul>
-		</div>
-	)
+        )            
+    }
 }
 
-function goToPage(file) {
-    return false
+class Contents extends Component {
+    componentDidMount() {
+        const ws = window.innerWidth
+        const spreads = document.getElementsByClassName("spread")
+        let i = 0
+        while (i < spreads.length) {
+            let spread = spreads[i]
+            spread.style.width = ws + "px"
+            i++
+        }
+    }
+
+    render() {
+        const props = this.props
+        const issue = props.table_of_contents["issues"].filter(issue => issue["slug"] == props.slug)
+
+        if (!issue) return <></>
+    
+        const title = issue[0]["title"]
+        const spreads = issue[0]["articles"]
+        return (
+            <>
+                <div className="spreads">
+                    {spreads.map((page, i) => {
+                        const page_left = page.left == null ? null : page.left.file
+                        const page_right = page.right == null ? null : page.right.file
+                        return (
+                            <div key={i} className="spread-container" id={"spread-" + page.slug}>
+                                <Spread
+                                    slug={props.slug} 
+                                    title={page.title} 
+                                    author={page.author}
+                                    page_left={page_left}
+                                    page_right={page_right}
+                                />
+                            </div>
+                        )
+                    })}
+                </div>
+                <IssueNavigation spreads={spreads} issue_slug={props.slug} />
+            </>
+        )   
+    }
 }
 
 export default function Issue(props) {
     const { slug } = useParams()
     let table_of_contents = undefined
-    console.log(props)
 
     if (!props.table_of_contents) {
         table_of_contents = props.GetYaml()
@@ -112,8 +114,6 @@ export default function Issue(props) {
     }
 
 	return (
-		<div>
-			<Contents slug={slug} table_of_contents={table_of_contents} />
-		</div>
+        <Contents slug={slug} table_of_contents={table_of_contents} />
 	)
 }
