@@ -28,7 +28,7 @@ const GetYaml = () => {
 	const [table_of_contents, setTableOfContents] = useState({})
 	const [isLoading, setLoading] = useState(true)
 	
-	const url = `thresholds.yml`
+	const url = `/thresholds.yml`
 	useEffect(() => {
 		fetch(url)
 			.then((res) => res.text())

@@ -30,7 +30,6 @@ function NavLink({spreads, page, issue_slug, page_slug}) {
                 i++
             }
             if (page.thumbAddClass != undefined && page.thumbAddClass[0] != undefined) {
-                console.log(page.thumbAddClass)
                 page.thumbAddClass.forEach((t) => {
                     let target = document.getElementById("nav-item-" + t.target)
                     target.classList.add(t.className)
