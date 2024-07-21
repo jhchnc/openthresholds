@@ -13,7 +13,7 @@ issues:
       #     file: intro-right.html
       - title: Rouse Article
         author: Rebecca Rouse
-        thumbnail: rouse.jpeg
+        thumbnail: rouse-nav-thumb.jpg
         slug: rouse
         left:
           file: rouse-left.html
@@ -26,7 +26,7 @@ issues:
             className: 
       - title: 
         author: Anna Weichselbraun
-        thumbnail: weichselbraun.jpeg
+        thumbnail: weichselbraun-thumb.JPG
         slug: weichselbraun
         left:
           file: weichselbraun-left.html
@@ -34,7 +34,7 @@ issues:
           file: weichselbraun-right.html
       - title: In My Coat Pockets
         author: Sabina Fazli
-        thumbnail: fazli.jpeg
+        thumbnail: fazli-nav-thumb.jpeg
         slug: fazli
         left:
           file: fazli-left.html
@@ -42,7 +42,7 @@ issues:
           file: fazli-right.html
       - title: Papers for Drawing
         author: Iris Brahms
-        thumbnail: brahms.jpeg
+        thumbnail: brahms-nav-thumb.jpg
         slug: brahms
         left:
           file: brahms-left.html
@@ -50,7 +50,7 @@ issues:
           file: brahms-right.html
       - title: 
         author: Olin Moctezuma
-        thumbnail: moctezuma.jpeg
+        thumbnail: moctezuma-nav-thumb.jpg
         slug: moctezuma
         left:
           file: moctezuma-left.html
@@ -58,15 +58,15 @@ issues:
           file: moctezuma-right.html
       - title: “And I in forme of paper speake to you”
         author: Georgina Wilson
-        thumbnail: wilson.jpeg
+        thumbnail: wilson-nav-thumb.jpg
         slug: wilson
-        left:
+        left: 
           file: wilson-left.html
         right:
           file: wilson-right.html
       - title: Wings of the Mayfly
         author: Mike Sweeney
-        thumbnail: sweeney.jpeg
+        thumbnail: sweeney-nav-thumb.jpg
         slug: sweeney
         left:
           file: sweeney-left.html
@@ -74,7 +74,7 @@ issues:
           file: sweeney-right.html
       - title: Remembering Through ‘Pictures of You’
         author: Jenifer Monger
-        thumbnail: monger.jpeg
+        thumbnail: monger-nav-thumb.jpg
         slug: monger
         left:
           file: monger-left.html
@@ -82,7 +82,7 @@ issues:
           file: monger-right.html
       - title: Fleeting Thoughts on Ephemerality
         author: Elana Herzog
-        thumbnail: herzog.jpeg
+        thumbnail: herzog-nav-thumb.jpg
         slug: herzog
         left:
           file: herzog-left.html
@@ -90,7 +90,7 @@ issues:
           file: herzog-right.html
       - title: Daedalian Wings, Clipped
         author: Deidre Lynch
-        thumbnail: lynch.jpeg
+        thumbnail: lynch-nav-thumb.jpg
         slug: lynch
         left:
           file: lynch-left.html
@@ -98,7 +98,7 @@ issues:
           file: lynch-right.html
       - title: 
         author: Catriona Macleod
-        thumbnail: macleod.jpeg
+        thumbnail: macleod-nav-thumb.jpg
         slug: macleod
         left:
           file: macleod-left.html
@@ -106,7 +106,7 @@ issues:
           file: macleod-right.html
       - title: On Discoverability
         author: Michael Stamm
-        thumbnail: stamm.jpeg
+        thumbnail: stamm-nav-thumb.jpg
         slug: stamm
         left:
           file: stamm-left.html
@@ -114,7 +114,7 @@ issues:
           file: stamm-right.html
       - title: 
         author: Charmaine Cadeau
-        thumbnail: cadeau.jpeg
+        thumbnail: dummy.jpg
         slug: cadeau
         left:
           file: cadeau-left.html
@@ -122,7 +122,7 @@ issues:
           file: cadeau-right.html
       - title: Self-portrait (Fall 2021)
         author: Maureen Flint
-        thumbnail: flint.jpeg
+        thumbnail: flint-nav-thumb.jpg
         slug: flint
         left:
           file: flint-left.html
@@ -130,7 +130,7 @@ issues:
           file: flint-right.html
       - title: On Newspaper Ephemera and Paper Nostalgia
         author: Will Mari
-        thumbnail: mari.jpeg
+        thumbnail: mari-nav-thumb.jpg
         slug: mari
         left:
           file: mari-left.html
@@ -138,7 +138,7 @@ issues:
           file:  mari-right.html
       - title: A Papery State of Mind
         author: Diana Anselmo
-        thumbnail: anselmo.jpeg
+        thumbnail: anselmo-nav-thumb.jpg
         slug: anselmo
         left:
           file: anselmo-left.html
@@ -146,7 +146,7 @@ issues:
           file: anselmo-right.html
       - title: Immersed in Paper
         author: Christina Corfield
-        thumbnail: corfield.jpeg
+        thumbnail: corfield-nav-thumb.jpg
         slug: corfield
         left:
           file: corfield-left.html
@@ -154,7 +154,7 @@ issues:
           file: corfield-right.html
       - title: 
         author: Jay Sylvestre
-        thumbnail: sylvestre.jpeg
+        thumbnail: dummy.jpg
         slug: sylvestre
         left:
           file: sylvestre-left.html
@@ -162,7 +162,7 @@ issues:
           file: sylvestre-right.html
       - title: Playful Resistance
         author: Ilinca Iurascu
-        thumbnail: iurascu.jpeg
+        thumbnail: dummy.jpg
         slug: iurascu
         left:
           file: iurascu-left.html
@@ -170,7 +170,7 @@ issues:
           file: iurascu-right.html
       - title: Kindly Deliver To...
         author: Jim Drobnick & Jennifer Fisher
-        thumbnail: drobnick-fisher.jpeg
+        thumbnail: dummy.jpg
         slug: drobnick-fisher
         left:
           file: drobnick-fisher-left.html
@@ -178,7 +178,7 @@ issues:
           file: drobnick-fisher-right.html
       - title: Paper or Textile?
         author: Alysse Kunshinski
-        thumbnail: kunshinski.jpeg
+        thumbnail: kunshinski-nav-thumb.jpg
         slug: kunshinski
         left:
           file: kunshinski-left.html

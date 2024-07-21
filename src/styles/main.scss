@@ -17,6 +17,7 @@
 
 body {
   margin: 0;
+  font-family: 'Roboto Slab', serif;
   display: flex;
   -ms-overflow-style: none;
   scrollbar-width: 0;
@@ -62,11 +63,14 @@ iframe
         flex: 50%;
         width: 50%;
         flex-shrink: 0;
-        padding: 20px;
+        margin-top:5%;
       }
       .page-left{
+        padding-left:8%;
+        padding-right:20px;
       }
       .page-right{
+        padding:0px;
       }
     }  
   }  
@@ -104,7 +108,6 @@ iframe
     word-spacing: .1em;
     font-weight: 700;
     margin:0;
-    font-family: 'Roboto Slab', serif;
   }
   small {
     font-weight: 400;
