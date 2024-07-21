@@ -36,7 +36,7 @@ class Spread extends Component {
                     </h3>
                 </div>
                 {this.props.page_left != null && 
-                    <div className="page page-left">
+                    <div className={"page page-left" + this.props.page_left}>
                         <Page 
                             file={this.props.page_left} 
                             slug={this.props.slug}
@@ -66,6 +66,11 @@ class Contents extends Component {
             spread.style.width = ws + "px"
             i++
         }
+
+        // const spread_containers = document.getElementsByClassName("spread-container")
+        // const first_spread = spread_containers[0].innerHTML
+        // const all = document.getElementsByClassName("spreads")[0].innerHTML
+        // // document.getElementsByClassName("spreads")[0].innerHTML = all + first_spread
     }
 
     render() {

@@ -20,10 +20,10 @@ issues:
         right:
           file: rouse-right.html
         thumbAddClass:
-          - target: 
-            className: 
-          - target: 
-            className: 
+          - target: fazli
+            className: blue
+          - target: weichselbraun
+            className: green
       - title: 
         author: Anna Weichselbraun
         thumbnail: weichselbraun.jpeg
@@ -32,6 +32,9 @@ issues:
           file: weichselbraun-left.html
         right:
           file: weichselbraun-right.html
+        thumbAddClass:
+          - target: rouse
+            className: red
       - title: In My Coat Pockets
         author: Sabina Fazli
         thumbnail: fazli.jpeg

@@ -20,6 +20,23 @@ function NavLink({spreads, page, issue_slug, page_slug}) {
             const position = getCurrentPostion(page_slug, spreads)
             const left = position * 100
             document.getElementsByClassName("spreads")[0].style.left = "-" + left + "%"
+
+            // manage the thumbAddClass relationship
+            const thumbnails = document.getElementsByClassName("nav-item")
+            let i = 0
+            while (i < thumbnails.length) {
+                let thumbnail = thumbnails[i]
+                thumbnail.className = 'nav-item'
+                i++
+            }
+            if (page.thumbAddClass != undefined && page.thumbAddClass[0] != undefined) {
+                console.log(page.thumbAddClass)
+                page.thumbAddClass.forEach((t) => {
+                    let target = document.getElementById("nav-item-" + t.target)
+                    target.classList.add(t.className)
+                })
+            }
+            
         }}>
             {!page["thumbnail"] &&
                 <>
@@ -45,7 +62,7 @@ export default class IssueNavigation extends Component {
                     <ul className="navbar-nav mr-auto">
                         {this.props.spreads.map((page, i) => {
                             return (
-                                <li key={i} className="nav-item">
+                                <li key={i} className="nav-item" id={"nav-item-" + page.slug}>
                                     <NavLink 
                                         spreads={this.props.spreads}
                                         page={page} 
