@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 import IssueNavigation from './issue_navigation'
 import 'bootstrap-icons/font/bootstrap-icons.scss'
+import Scrollbar from 'smooth-scrollbar'
 
 
 const Page = (props) => {
@@ -28,7 +29,7 @@ const Page = (props) => {
 class Spread extends Component {
     render() {
         return (
-            <div className="spread">
+            <div xdata-scrollbar className="spread">
                 <div className="header">
                     <h3>
                         {this.props.title}<br/> 
@@ -36,7 +37,7 @@ class Spread extends Component {
                     </h3>
                 </div>
                 {this.props.page_left != null && 
-                    <div className={"page page-left" + this.props.page_left}>
+                    <div className={"page page-left"}>
                         <Page 
                             file={this.props.page_left} 
                             slug={this.props.slug}
@@ -59,13 +60,17 @@ class Spread extends Component {
 class Contents extends Component {
     componentDidMount() {
         const ws = window.innerWidth
+        const wh = window.innerHeight
         const spreads = document.getElementsByClassName("spread")
         let i = 0
         while (i < spreads.length) {
             let spread = spreads[i]
             spread.style.width = ws + "px"
+            spread.style.height = wh + "px"
             i++
         }
+
+        Scrollbar.initAll()
 
         // const spread_containers = document.getElementsByClassName("spread-container")
         // const first_spread = spread_containers[0].innerHTML
