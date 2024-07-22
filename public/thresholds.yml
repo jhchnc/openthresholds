@@ -2,15 +2,29 @@ title: thresholds
 issues:
   - slug: paperology
     title: The Paperology Book
+    navigation:
+      - rouse
+      - moctezuma
+      - anselmo
+      - flint
+      - wilson
+      - corfield
+      - sweeney
+      - stamm
+      - lynch
+      - monger
+      - herzog
+      - brahms
+      - fazli
+      - sylvestre
+      - macleod
+      - cadeau
+      - mari
+      - weichselbraun
+      - drobnick-fisher
+      - iurascu
+      - kunshinski
     articles:
-      # - title: Introduction
-      #   author: test
-      #   thumbnail: introduction.jpg
-      #   slug: intro
-      #   left:
-      #     file: intro-left.html
-      #   right:
-      #     file: intro-right.html
       - title: Rouse Article
         author: Rebecca Rouse
         thumbnail: rouse-nav-thumb.jpg
@@ -187,25 +201,3 @@ issues:
           file: kunshinski-left.html
         right:
           file: kunshinski-right.html
-navigation:
-  - rouse
-  - moctezuma
-  - anselmo
-  - flint
-  - wilson
-  - corfield
-  - sweeney
-  - stamm
-  - lynch
-  - monger
-  - herzog
-  - brahms
-  - fazli
-  - sylvestre
-  - macleod
-  - cadeau
-  - mari
-  - weichselbraun
-  - drobnick-fisher
-  - iurascu
-  - kushinski

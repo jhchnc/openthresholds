@@ -59,9 +59,11 @@ export default class IssueNavigation extends Component {
             <>
                 <nav id="pages-menu" className="navbar navbar-expand">
                     <ul className="navbar-nav mr-auto">
-                        {this.props.spreads.map((page, i) => {
+                        {this.props.navigation.map((slug, i) => {
+                            const position = getCurrentPostion(slug, this.props.spreads)
+                            let page = this.props.spreads[position]
                             return (
-                                <li key={i} className="nav-item" id={"nav-item-" + page.slug}>
+                                <li key={i} className="nav-item" id={"nav-item-" + slug}>
                                     <NavLink 
                                         spreads={this.props.spreads}
                                         page={page} 

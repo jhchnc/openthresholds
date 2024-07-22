@@ -29,7 +29,7 @@ const Page = (props) => {
 class Spread extends Component {
     render() {
         return (
-            <div xdata-scrollbar className="spread">
+            <div data-scrollbar className="spread">
                 <div className="header">
                     <h3>
                         {this.props.title}<br/> 
@@ -70,12 +70,7 @@ class Contents extends Component {
             i++
         }
 
-        Scrollbar.initAll()
-
-        // const spread_containers = document.getElementsByClassName("spread-container")
-        // const first_spread = spread_containers[0].innerHTML
-        // const all = document.getElementsByClassName("spreads")[0].innerHTML
-        // // document.getElementsByClassName("spreads")[0].innerHTML = all + first_spread
+        // Scrollbar.initAll()
     }
 
     render() {
@@ -86,6 +81,7 @@ class Contents extends Component {
     
         const title = issue[0]["title"]
         const spreads = issue[0]["articles"]
+        const navigation = issue[0]["navigation"]
         return (
             <>
                 <div className="turn-pages">
@@ -97,7 +93,6 @@ class Contents extends Component {
                         if (parseInt(current_left) == 0) {
                             left = -((spreads.length-1) * 100) - 50
                         }
-                        console.log(left)
                         document.getElementsByClassName("spreads")[0].style.left = left + "%"
                     }}></a>
                     <a className="bi bi-chevron-right" onClick={() => {
@@ -129,7 +124,7 @@ class Contents extends Component {
                         )
                     })}
                 </div>
-                <IssueNavigation spreads={spreads} issue_slug={props.slug} />
+                <IssueNavigation navigation={navigation} spreads={spreads} issue_slug={props.slug} />
             </>
         )   
     }
