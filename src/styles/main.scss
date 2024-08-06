@@ -34,7 +34,7 @@ body::-webkit-scrollbar {
 img,
 iframe 
 {
-  max-width: 100%;
+ // max-width: 80%;
   margin: 0;
   padding: 0;
 }
@@ -64,14 +64,17 @@ iframe
         flex: 50%;
         width: 50%;
         flex-shrink: 0;
-        margin-top:5%;
+        margin:0;
+        padding:0;
       }
       .page-left{
-        padding-left:8%;
-        padding-right:20px;
+        margin:0;
+        padding:0;
       }
       .page-right{
-        padding:0px;
+        margin:0;
+        padding:0;
+
       }
     }  
   }  
@@ -86,12 +89,14 @@ iframe
 
 #pages-menu {
   justify-content: center;
+  z-index:2000;
   ul {
     position: fixed;
     height: 100px;
     bottom: 0;
     li {
       width: 40px;
+      height:27px;
       img {
         max-width: 40px;
       }
@@ -101,39 +106,57 @@ iframe
 
 .header{
   color: #fff;
-  text-transform:uppercase;
   position: absolute;
   width: 100%;
   text-align: center;
-  line-height:1;
+  z-index:2000;
   h3{
     background-color: #f0f;
     display: inline-block;
-    padding: 10px 35px;
+    padding: 10px 20px 10px 20px;
+    line-height:1;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    font-size: 19px;
-    word-spacing: .1em;
-    font-weight: 700;
-    margin:0;
   }
-  small {
+  .title{
+    font-size: 19px;
+    font-weight: 700;
+    text-transform:uppercase;
+    border-bottom:2px dashed #ffc2ff;
+  }
+  .author {
+    text-transform:uppercase;
     font-weight: 400;
-    display: block;
+    font-size:16px;
     padding: 5px 0 0 0;
   }
+  .location{
+    color:#ffc2ff;
+    font-size:13px;
+  }
+  .from{
+    float:left;
+    font-size:13px;
+    padding:6px;
+    margin-right:20px;
+    vertical-align: baseline;
+    color:#ffc2ff;
+  }
+  .to{
+    float:right;
+    font-size:13px;
+    margin-left:20px;
+    padding:6px;
+    color:#ffc2ff;
+  }
 }
-
 img {
   display:block;
   margin-left:auto;
-  margin-right:auto;
-  margin-top:15px;
-  margin-bottom:15px;
+  margin-right:auto; 
 }
 
 .nav-item {
-  margin-left: 3px;
   a {
     cursor: pointer;
   }
@@ -141,12 +164,12 @@ img {
 
 .turn-pages {
   position: fixed;
-  top: 50%;
+  top: 48%;
   font-size: 3em;
   font-weight: bolder;
   width: 100%;
   -webkit-text-stroke: 2px;
-  z-index: 1;
+  z-index: 1000;
 
   .bi {
     cursor: pointer;
@@ -155,10 +178,10 @@ img {
   .bi:hover {
     color: #f0f;
   }
-
   .bi-chevron-right {
     position: absolute;
     right: 0;
+    z-index:1500;
   }
 }
 

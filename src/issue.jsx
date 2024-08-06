@@ -32,9 +32,12 @@ class Spread extends Component {
             <div data-scrollbar className="spread">
                 <div className="header">
                     <h3>
-                        {this.props.title}<br/> 
-                        <small>{this.props.author}</small>
-                    </h3>
+                    <small><span class="from"><img src="/issues/paperology/from.png" /><br/>from {this.props.from}</span><span class="to"><img src="/issues/paperology/to.png" /><br/>to {this.props.to}</span></small>
+       
+                    <span class="title">{this.props.title}</span><br/>
+                    <span class="author">{this.props.author}</span><br/>
+                    <span class="location">{this.props.location}</span><br/>
+                     </h3>
                 </div>
                 {this.props.page_left != null && 
                     <div className={"page page-left"}>
@@ -116,7 +119,10 @@ class Contents extends Component {
                                 <Spread
                                     slug={props.slug} 
                                     title={page.title} 
+                                    location={page.location} 
                                     author={page.author}
+                                    from={page.from} 
+                                    to={page.to} 
                                     page_left={page_left}
                                     page_right={page_right}
                                 />
