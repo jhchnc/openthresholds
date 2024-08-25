@@ -162,26 +162,21 @@ img {
   }
 }
 
-.turn-pages {
+.bi {
+  cursor: pointer;
+  color: #fcf;
   position: fixed;
   top: 48%;
   font-size: 3em;
   font-weight: bolder;
-  width: 100%;
   -webkit-text-stroke: 2px;
   z-index: 1000;
-
-  .bi {
-    cursor: pointer;
-    color: #fcf;
-  }
-  .bi:hover {
-    color: #f0f;
-  }
-  .bi-chevron-right {
-    position: absolute;
-    right: 0;
-    z-index:1500;
-  }
+  display: inline;
 }
-
+.bi:hover {
+  color: #f0f;
+}
+.bi-chevron-right {
+  right: 0;
+  z-index:1500;
+}

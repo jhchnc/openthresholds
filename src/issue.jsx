@@ -32,11 +32,11 @@ class Spread extends Component {
             <div data-scrollbar className="spread">
                 <div className="header">
                     <h3>
-                    <small><span class="from"><img src="/issues/paperology/from.png" /><br/>from {this.props.from}</span><span class="to"><img src="/issues/paperology/to.png" /><br/>to {this.props.to}</span></small>
+                    <small><span className="from"><img src="/issues/paperology/from.png" /><br/>from {this.props.from}</span><span className="to"><img src="/issues/paperology/to.png" /><br/>to {this.props.to}</span></small>
        
-                    <span class="title">{this.props.title}</span><br/>
-                    <span class="author">{this.props.author}</span><br/>
-                    <span class="location">{this.props.location}</span><br/>
+                    <span className="title">{this.props.title}</span><br/>
+                    <span className="author">{this.props.author}</span><br/>
+                    <span className="location">{this.props.location}</span><br/>
                      </h3>
                 </div>
                 {this.props.page_left != null && 
@@ -85,6 +85,7 @@ class Contents extends Component {
         const title = issue[0]["title"]
         const spreads = issue[0]["articles"]
         const navigation = issue[0]["navigation"]
+        
         return (
             <>
                 <div className="turn-pages">
