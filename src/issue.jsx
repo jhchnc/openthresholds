@@ -60,24 +60,54 @@ class Spread extends Component {
     }
 }
 
+function setActivePostion(left, spreads) {
+    // let positions = spreads.map((page, i) => {
+    //     if (page.slug == page_slug) {
+    //         return i
+    //     }
+    //     return null
+    // })
+    // let position = positions.filter((p, i) => {
+    //     return p != null
+    // })
+    // return position[0]
+} 
+
+function getCurrentPostion(page_slug, spreads) {
+    let positions = spreads.map((page, i) => {
+        if (page.slug == page_slug) {
+            return i
+        }
+        return null
+    })
+    let position = positions.filter((p, i) => {
+        return p != null
+    })
+    return position[0]
+} 
+
 class Contents extends Component {
     componentDidMount() {
         const ws = window.innerWidth
         const wh = window.innerHeight
-        const spreads = document.getElementsByClassName("spread")
+        const spread_collection = document.getElementsByClassName("spread")
         let i = 0
-        while (i < spreads.length) {
-            let spread = spreads[i]
+        while (i < spread_collection.length) {
+            let spread = spread_collection[i]
             spread.style.width = ws + "px"
             spread.style.height = wh + "px"
             i++
         }
 
-        // append the first page to the 
-        // const spreads_container = document.getElementsByClassName("spreads")[0]
-        // spreads_container.appendChild(spreads[0].cloneNode())
-
-        // Scrollbar.initAll()
+        // allow for a reloaded page
+        // find the hashed position
+        const issue = this.props.table_of_contents["issues"].filter(issue => issue["slug"] == this.props.slug)
+        const spreads = issue[0]["articles"]
+        let reloaded_slug = window.location.hash.replace("#","")
+        const position = getCurrentPostion(reloaded_slug, spreads)
+        // set a left value according to it's position x 100
+        const left = position * 100
+        document.getElementsByClassName("spreads")[0].style.left = "-" + left + "%"
     }
 
     render() {
@@ -102,11 +132,10 @@ class Contents extends Component {
                             : 0
                         let left = current_left + 50
                         if (current_left == 0) {
-                            left = -((spreads.length-1) * 100) // - 50
+                            left = -((spreads.length-1) * 100) // - 50 // might need to restore this
                         }
-                        console.log([current_left, left])
-
                         document.getElementsByClassName("spreads")[0].style.left = left + "%"
+                        setActivePostion(left, spreads)
                     }}></a>
                     <a className="bi bi-chevron-right" onClick={() => {
                         const current_left = document.getElementsByClassName("spreads")[0].style.left
@@ -120,8 +149,8 @@ class Contents extends Component {
                         if (current_left == -((spreads.length-1) * 100)) {
                             left = 0
                         }
-
                         document.getElementsByClassName("spreads")[0].style.left = left + "%"
+                        setActivePostion(left, spreads)
                     }}></a>
                 </div>
 
@@ -162,8 +191,6 @@ export default function Issue(props) {
     else {
         table_of_contents = props.table_of_contents
     }
-
-    console.log(window.location.hash)
 
 	return (
         <Contents slug={slug} table_of_contents={table_of_contents} />
