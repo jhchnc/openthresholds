@@ -73,6 +73,10 @@ class Contents extends Component {
             i++
         }
 
+        // append the first page to the 
+        // const spreads_container = document.getElementsByClassName("spreads")[0]
+        // spreads_container.appendChild(spreads[0].cloneNode())
+
         // Scrollbar.initAll()
     }
 
@@ -85,28 +89,38 @@ class Contents extends Component {
         const title = issue[0]["title"]
         const spreads = issue[0]["articles"]
         const navigation = issue[0]["navigation"]
-        
+
+        // if it's divisible by 50 it is a half page
+        // so if's not, then determine the active nav-item and set it to active 
+
         return (
             <>
                 <div className="turn-pages">
                     <a className="bi bi-chevron-left" onClick={() => {
                         const current_left = document.getElementsByClassName("spreads")[0].style.left
-                            ? document.getElementsByClassName("spreads")[0].style.left
+                            ? parseInt(document.getElementsByClassName("spreads")[0].style.left)
                             : 0
-                        let left = parseInt(current_left) + 50
-                        if (parseInt(current_left) == 0) {
-                            left = -((spreads.length-1) * 100) - 50
+                        let left = current_left + 50
+                        if (current_left == 0) {
+                            left = -((spreads.length-1) * 100) // - 50
                         }
+                        console.log([current_left, left])
+
                         document.getElementsByClassName("spreads")[0].style.left = left + "%"
                     }}></a>
                     <a className="bi bi-chevron-right" onClick={() => {
                         const current_left = document.getElementsByClassName("spreads")[0].style.left
-                            ? document.getElementsByClassName("spreads")[0].style.left
+                            ? parseInt(document.getElementsByClassName("spreads")[0].style.left)
                             : 0
-                        let left = parseInt(current_left) - 50
-                        if (parseInt(current_left) < -((spreads.length-1) * 100)) {
+                        let left = current_left - 50
+                        if (current_left < -((spreads.length-1) * 100)) {
                             left = 0
                         }
+                        // the _last_ slide -- might need to refactor this
+                        if (current_left == -((spreads.length-1) * 100)) {
+                            left = 0
+                        }
+
                         document.getElementsByClassName("spreads")[0].style.left = left + "%"
                     }}></a>
                 </div>
@@ -148,6 +162,8 @@ export default function Issue(props) {
     else {
         table_of_contents = props.table_of_contents
     }
+
+    console.log(window.location.hash)
 
 	return (
         <Contents slug={slug} table_of_contents={table_of_contents} />

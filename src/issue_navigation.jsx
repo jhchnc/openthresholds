@@ -21,6 +21,9 @@ function NavLink({spreads, page, issue_slug, page_slug}) {
             const left = position * 100
             document.getElementsByClassName("spreads")[0].style.left = "-" + left + "%"
 
+            // manage the hash 
+            window.location.hash = '#' + page_slug
+
             // manage the thumbAddClass relationship
             const thumbnails = document.getElementsByClassName("nav-item")
             let i = 0
