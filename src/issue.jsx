@@ -60,17 +60,18 @@ class Spread extends Component {
     }
 }
 
-function setActivePostion(left, spreads) {
-    // let positions = spreads.map((page, i) => {
-    //     if (page.slug == page_slug) {
-    //         return i
-    //     }
-    //     return null
-    // })
-    // let position = positions.filter((p, i) => {
-    //     return p != null
-    // })
-    // return position[0]
+function setActivePostion(left) {
+    // if it's divisible by 50 it is a half page
+    // so if's not, then determine the active nav-item and set it to active 
+    if (Math.abs(left) % 100 == 0) {
+        let current_nav = document.getElementsByClassName("nav-item active")[0]
+        if (current_nav) {
+            current_nav.classList.remove('active')
+        }
+        let position = Math.abs(left) / 100
+        let link = document.getElementsByClassName("nav-item")[position]
+        link.classList.add("active")
+    }
 } 
 
 function getCurrentPostion(page_slug, spreads) {
@@ -108,6 +109,11 @@ class Contents extends Component {
         // set a left value according to it's position x 100
         const left = position * 100
         document.getElementsByClassName("spreads")[0].style.left = "-" + left + "%"
+
+        // set active trait on nav link
+        let link = document.getElementsByClassName("nav-item")[position]
+        link.classList.add("active")
+
     }
 
     render() {
@@ -116,12 +122,8 @@ class Contents extends Component {
 
         if (!issue) return <></>
     
-        const title = issue[0]["title"]
         const spreads = issue[0]["articles"]
         const navigation = issue[0]["navigation"]
-
-        // if it's divisible by 50 it is a half page
-        // so if's not, then determine the active nav-item and set it to active 
 
         return (
             <>
@@ -135,7 +137,7 @@ class Contents extends Component {
                             left = -((spreads.length-1) * 100) // - 50 // might need to restore this
                         }
                         document.getElementsByClassName("spreads")[0].style.left = left + "%"
-                        setActivePostion(left, spreads)
+                        setActivePostion(left)
                     }}></a>
                     <a className="bi bi-chevron-right" onClick={() => {
                         const current_left = document.getElementsByClassName("spreads")[0].style.left
@@ -150,7 +152,7 @@ class Contents extends Component {
                             left = 0
                         }
                         document.getElementsByClassName("spreads")[0].style.left = left + "%"
-                        setActivePostion(left, spreads)
+                        setActivePostion(left)
                     }}></a>
                 </div>
 
