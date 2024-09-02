@@ -112,7 +112,7 @@ class Contents extends Component {
 
         // set active trait on nav link
         let link = document.getElementsByClassName("nav-item")[position]
-        link.classList.add("active")
+        // link.classList.add("active")
 
     }
 
