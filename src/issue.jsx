@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 import IssueNavigation from './issue_navigation'
 import 'bootstrap-icons/font/bootstrap-icons.scss'
-import Scrollbar from 'smooth-scrollbar'
 
 
 const Page = (props) => {
@@ -60,19 +59,22 @@ class Spread extends Component {
     }
 }
 
+// EDIT: RECODED THIS FUNCTION TO WORK WITH THE NEW NAVIGATION SYSTEM.
+// Now uses the navigation array to determine the correct slug for the active position so the active thumbnail corresponds to the current page.
 function setActivePostion(left) {
-    // if it's divisible by 50 it is a half page
-    // so if's not, then determine the active nav-item and set it to active 
-    if (Math.abs(left) % 100 == 0) {
-        let current_nav = document.getElementsByClassName("nav-item active")[0]
-        if (current_nav) {
-            current_nav.classList.remove('active')
-        }
-        let position = Math.abs(left) / 100
-        let link = document.getElementsByClassName("nav-item")[position]
+    const issue = this.props.table_of_contents["issues"].filter(issue => issue["slug"] == this.props.slug)[0]
+    const navigation = issue["navigation"]
+    let current_nav = document.getElementsByClassName("nav-item active")[0]
+    if (current_nav) {
+        current_nav.classList.remove('active')
+    }
+    let position = Math.abs(left) / 100
+    let slug = navigation[position]
+    let link = document.getElementById("nav-item-" + slug)
+    if (link) {
         link.classList.add("active")
     }
-} 
+}
 
 function getCurrentPostion(page_slug, spreads) {
     let positions = spreads.map((page, i) => {
@@ -88,78 +90,150 @@ function getCurrentPostion(page_slug, spreads) {
 } 
 
 class Contents extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentPosition: 0,
+            isSplitScreen: false,
+            splitScreenDirection: null,
+            previousPosition: null,
+        };
+        // Create an array of slugs in the order they appear in articles
+        this.articleOrder = this.props.table_of_contents.issues
+            .find(issue => issue.slug === this.props.slug)
+            .articles.map(article => article.slug);
+    }
+
     componentDidMount() {
-        const ws = window.innerWidth
-        const wh = window.innerHeight
-        const spread_collection = document.getElementsByClassName("spread")
-        let i = 0
-        while (i < spread_collection.length) {
-            let spread = spread_collection[i]
-            spread.style.width = ws + "px"
-            spread.style.height = wh + "px"
-            i++
+        const ws = window.innerWidth;
+        const wh = window.innerHeight;
+        const spread_collection = document.getElementsByClassName("spread");
+        for (let spread of spread_collection) {
+            spread.style.width = ws + "px";
+            spread.style.height = wh + "px";
         }
 
-        // allow for a reloaded page
-        // find the hashed position
-        const issue = this.props.table_of_contents["issues"].filter(issue => issue["slug"] == this.props.slug)
-        const spreads = issue[0]["articles"]
-        let reloaded_slug = window.location.hash.replace("#","")
-        const position = getCurrentPostion(reloaded_slug, spreads)
-        // set a left value according to it's position x 100
-        const left = position * 100
-        document.getElementsByClassName("spreads")[0].style.left = "-" + left + "%"
+        // Check if there's a hash in the URL
+        let reloaded_slug = window.location.hash.replace("#","");
+        let position = 0;
 
-        // set active trait on nav link
-        let link = document.getElementsByClassName("nav-item")[position]
-        //link.classList.add("active")
+        if (reloaded_slug) {
+            position = this.props.navigation.indexOf(reloaded_slug);
+            position = position >= 0 ? position : 0;
+        } else {
+            // If no hash, find the position of "A Commonplace Book for Uncommon Times"
+            const firstPageSlug = this.props.navigation.find(slug => {
+                const page = this.props.table_of_contents.issues
+                    .find(issue => issue.slug === this.props.slug)
+                    .articles.find(article => article.slug === slug);
+                return page && page.title === "A Commonplace Book for Uncommon Times";
+            });
+            position = this.props.navigation.indexOf(firstPageSlug);
+            position = position >= 0 ? position : 0;
+        }
 
+        this.setState({ currentPosition: position }, () => {
+            this.updateSpreadPosition();
+            window.location.hash = '#' + this.getCurrentSlug();
+        });
+    }
+
+    updateSpreadPosition() {
+        let left;
+        if (this.state.isSplitScreen) {
+            if (this.state.splitScreenDirection === 'next') {
+                left = -(this.state.currentPosition * 100 + 50);
+            } else {
+                left = -(this.state.currentPosition * 100 - 50);
+            }
+        } else {
+            left = -(this.state.currentPosition * 100);
+        }
+        document.getElementsByClassName("spreads")[0].style.left = left + "%";
+        this.updateActiveNavItem();
+    }
+
+    updateActiveNavItem() {
+        const thumbnails = document.getElementsByClassName("nav-item");
+        for (let thumbnail of thumbnails) {
+            thumbnail.classList.remove('active');
+        }
+        const activeNavItem = document.getElementById("nav-item-" + this.getCurrentSlug());
+        if (activeNavItem) {
+            activeNavItem.classList.add('active');
+        }
+    }
+
+    getCurrentSlug() {
+        return this.articleOrder[this.state.currentPosition];
+    }
+
+    navigatePage(direction) {
+        if (this.state.isSplitScreen) {
+            if (direction === this.state.splitScreenDirection) {
+                // Complete the navigation
+                let newIndex = direction === 'next' 
+                    ? (this.state.currentPosition + 1) % this.articleOrder.length
+                    : (this.state.currentPosition - 1 + this.articleOrder.length) % this.articleOrder.length;
+                
+                this.setState({ 
+                    currentPosition: newIndex, 
+                    isSplitScreen: false, 
+                    splitScreenDirection: null,
+                    previousPosition: null
+                }, () => {
+                    this.updateSpreadPosition();
+                    window.location.hash = '#' + this.getCurrentSlug();
+                });
+            } else {
+                // Go back to the original page
+                this.setState({ 
+                    currentPosition: this.state.previousPosition, 
+                    isSplitScreen: false, 
+                    splitScreenDirection: null,
+                    previousPosition: null
+                }, () => {
+                    this.updateSpreadPosition();
+                    window.location.hash = '#' + this.getCurrentSlug();
+                });
+            }
+        } else {
+            // Enter split-screen mode
+            let nextIndex = direction === 'next'
+                ? (this.state.currentPosition + 1) % this.articleOrder.length
+                : (this.state.currentPosition - 1 + this.articleOrder.length) % this.articleOrder.length;
+            
+            this.setState({ 
+                isSplitScreen: true, 
+                splitScreenDirection: direction,
+                previousPosition: this.state.currentPosition
+            }, () => {
+                this.updateSpreadPosition();
+            });
+        }
     }
 
     render() {
-        const props = this.props
-        const issue = props.table_of_contents["issues"].filter(issue => issue["slug"] == props.slug)
+        const props = this.props;
+        const issue = props.table_of_contents["issues"].find(issue => issue["slug"] === props.slug);
 
-        if (!issue) return <></>
+        if (!issue) return <></>;
     
-        const spreads = issue[0]["articles"]
-        const navigation = issue[0]["navigation"]
+        const spreads = issue["articles"];
+        const navigation = props.navigation;
 
         return (
             <>
                 <div className="turn-pages">
-                    <a className="bi bi-chevron-left" onClick={() => {
-                        const current_left = document.getElementsByClassName("spreads")[0].style.left
-                            ? parseInt(document.getElementsByClassName("spreads")[0].style.left)
-                            : 0
-                        let left = current_left + 50
-                        if (current_left == 0) {
-                            left = -((spreads.length-1) * 100) // - 50 // might need to restore this
-                        }
-                        document.getElementsByClassName("spreads")[0].style.left = left + "%"
-                        setActivePostion(left)
-                    }}></a>
-                    <a className="bi bi-chevron-right" onClick={() => {
-                        const current_left = document.getElementsByClassName("spreads")[0].style.left
-                            ? parseInt(document.getElementsByClassName("spreads")[0].style.left)
-                            : 0
-                        let left = current_left - 50
-                        if (current_left < -((spreads.length-1) * 100)) {
-                            left = 0
-                        }
-                        // the _last_ slide -- might need to refactor this
-                        if (current_left == -((spreads.length-1) * 100)) {
-                            left = 0
-                        }
-                        document.getElementsByClassName("spreads")[0].style.left = left + "%"
-                        setActivePostion(left)
-                    }}></a>
+                    <a className="bi bi-chevron-left" onClick={() => this.navigatePage('prev')}></a>
+                    <a className="bi bi-chevron-right" onClick={() => this.navigatePage('next')}></a>
                 </div>
 
                 <div className="spreads">
-                    {spreads.map((page, i) => {
-                        const page_left = page.left == null ? null : page.left.file
-                        const page_right = page.right == null ? null : page.right.file
+                    {this.articleOrder.map((slug, i) => {
+                        const page = spreads.find(spread => spread.slug === slug);
+                        const page_left = page.left == null ? null : page.left.file;
+                        const page_right = page.right == null ? null : page.right.file;
                         return (
                             <div key={i} className="spread-container" id={"spread-" + page.slug}>
                                 <Spread
@@ -173,12 +247,24 @@ class Contents extends Component {
                                     page_right={page_right}
                                 />
                             </div>
-                        )
+                        );
                     })}
                 </div>
-                <IssueNavigation navigation={navigation} spreads={spreads} issue_slug={props.slug} />
+                <IssueNavigation 
+                    navigation={navigation} 
+                    spreads={spreads} 
+                    issue_slug={props.slug} 
+                    onNavigate={(position, isSplitScreen) => {
+                        const newPosition = this.articleOrder.indexOf(navigation[position]);
+                        this.setState({ 
+                            currentPosition: newPosition, 
+                            isSplitScreen, 
+                            splitScreenDirection: null 
+                        }, this.updateSpreadPosition);
+                    }}
+                />
             </>
-        )   
+        );   
     }
 }
 
@@ -194,7 +280,13 @@ export default function Issue(props) {
         table_of_contents = props.table_of_contents
     }
 
-	return (
-        <Contents slug={slug} table_of_contents={table_of_contents} />
-	)
+    // EDIT: ADDED THIS
+    const issue = table_of_contents["issues"].find(issue => issue["slug"] === slug)
+    if (!issue) return <>Issue not found.</>
+
+    // EDIT: ADDED NAVIGATION PROP
+    return (
+        <Contents slug={slug} table_of_contents={table_of_contents} navigation={issue.navigation} 
+        />
+    )
 }

@@ -1,45 +1,8 @@
 import { Component } from 'react'
 
-
-function getCurrentPostion(page_slug, spreads) {
-    let positions = spreads.map((page, i) => {
-        if (page.slug == page_slug) {
-            return i
-        }
-        return null
-    })
-    let position = positions.filter((p, i) => {
-        return p != null
-    })
-    return position[0]
-} 
-
-function NavLink({spreads, page, issue_slug, page_slug}) {
+function NavLink({page, issue_slug, page_slug, onClick}) {
     return (
-        <a onClick={() => {
-            const position = getCurrentPostion(page_slug, spreads)
-            const left = position * 100
-            document.getElementsByClassName("spreads")[0].style.left = "-" + left + "%"
-
-            // manage the hash 
-            window.location.hash = '#' + page_slug
-
-            // manage the thumbAddClass relationship
-            const thumbnails = document.getElementsByClassName("nav-item")
-            let i = 0
-            while (i < thumbnails.length) {
-                let thumbnail = thumbnails[i]
-                thumbnail.className = 'nav-item'
-                i++
-            }
-            if (page.thumbAddClass != undefined && page.thumbAddClass[0] != undefined) {
-                page.thumbAddClass.forEach((t) => {
-                    let target = document.getElementById("nav-item-" + t.target)
-                    target.classList.add(t.className)
-                })
-            }
-            
-        }}>
+        <a onClick={() => onClick(page_slug)}>
             {!page["thumbnail"] &&
                 <>
                     {page["title"]}<br />
@@ -56,22 +19,43 @@ function NavLink({spreads, page, issue_slug, page_slug}) {
 }
 
 export default class IssueNavigation extends Component {
+    // EDIT: Addded handleNavClick method
+    handleNavClick = (page_slug) => {
+        const position = this.props.navigation.indexOf(page_slug);
+        document.getElementsByClassName("spreads")[0].style.left = "-" + (position * 100) + "%";
+        window.location.hash = '#' + page_slug;
+
+        const thumbnails = document.getElementsByClassName("nav-item");
+        for (let thumbnail of thumbnails) {
+            thumbnail.classList.remove('active');
+        }
+        const clickedNavItem = document.getElementById("nav-item-" + page_slug);
+        if (clickedNavItem) {
+            clickedNavItem.classList.add('active');
+        }
+
+        // EDIT: Added so parent component can update state when navigation occurs.
+        if (this.props.onNavigate) {
+            this.props.onNavigate(position, false);
+        }
+    }
+
     render() {
-        if (!this.props.spreads) return <></>
+        if (!this.props.spreads) return <></>;
         return (
             <>
                 <nav id="pages-menu" className="navbar navbar-expand">
                     <ul className="navbar-nav mr-auto">
+                        {/* EDIT: Updated mapping logic. Simplified page finding process + ensure correct order.*/}
                         {this.props.navigation.map((slug, i) => {
-                            const position = getCurrentPostion(slug, this.props.spreads)
-                            let page = this.props.spreads[position]
+                            const page = this.props.spreads.find(spread => spread.slug === slug);
                             return (
                                 <li key={i} className="nav-item" id={"nav-item-" + slug}>
                                     <NavLink 
-                                        spreads={this.props.spreads}
                                         page={page} 
                                         issue_slug={this.props.issue_slug} 
                                         page_slug={page.slug} 
+                                        onClick={this.handleNavClick}
                                     />
                                 </li>
                             )
