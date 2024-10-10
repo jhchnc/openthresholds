@@ -44,6 +44,8 @@ const GetYaml = () => {
 	return table_of_contents
 }
 
+let v4="/4";
+
 export default function App(props) {
 	const table_of_contents = GetYaml()
 
@@ -52,8 +54,8 @@ export default function App(props) {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<TableOfContents table_of_contents={table_of_contents} />} />
-				<Route path="/issue/:slug" element={<Issue {...props} table_of_contents={table_of_contents} GetYaml={GetYaml} />} />
+				<Route path={`${v4}/`} element={<TableOfContents table_of_contents={table_of_contents} />} />
+				<Route path={`${v4}/issue/:slug`} element={<Issue {...props} table_of_contents={table_of_contents} GetYaml={GetYaml} />} />
 			</Routes>
 		</BrowserRouter>
 	)
