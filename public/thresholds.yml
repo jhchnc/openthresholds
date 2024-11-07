@@ -23,12 +23,12 @@ issues:
       - weichselbraun
       - drobnick-fisher
       - iurascu
-      - kunshinski
+      - kushinski
     articles:
       - title: A Commonplace Book for Uncommon Times
         author: Rebecca Rouse
-        location: Skovde, Sweden
-        from: Montréal
+        location: Skövde, Sweden
+        from: Skövde
         to: Vienna
         thumbnail: rouse-nav.jpg
         slug: rouse
@@ -42,7 +42,7 @@ issues:
       - title: A Tiny Book of Stamps
         author: Anna Weichselbraun
         location: Vienna, Austria
-        from: Skovde
+        from: Skövde
         to: Göttingen
         thumbnail: weichselbraun-nav.jpeg
         slug: weichselbraun
@@ -208,7 +208,7 @@ issues:
         thumbAddClass:
           - target: cadeau
             className: active
-      - title: Self-portrait (Fall 2021)
+      - title: Paper Portrait
         author: Maureen Flint
         location: Conyers, GA, USA
         from: Lewisville
@@ -307,18 +307,18 @@ issues:
           - target: drobnick-fisher
             className: active
       - title: Paper or Textile?
-        author: Alysse Kunshinski
+        author: Alysse Kushinski
         location: Los Angeles, CA, USA
         from: Toronto
         to: Montréal
-        thumbnail: kunshinski-nav.jpeg
-        slug: kunshinski
+        thumbnail: kushinski-nav.jpeg
+        slug: kushinski
         left:
-          file: kunshinski-left.html
+          file: kushinski-left.html
         right:
-          file: kunshinski-right.html
+          file: kushinski-right.html
         thumbAddClass:
-          - target: kunshinski
+          - target: kushinski
             className: active
           - target: drobnick-fisher
             className: highlight
