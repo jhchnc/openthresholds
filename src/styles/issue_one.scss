@@ -1,4 +1,40 @@
+#intro{
+  background-image: url('/issues/paperology/cover-1.jpg');
+  background-size: 100% auto;
+  width: 100vw;
+  height:100vh;
+  overflow:scroll;
 
+}
+#introtitle{
+  text-align:center;
+  font-size:6em;
+  margin-top:49vh;
+}
+#introbyline {
+  text-align:center;
+  color:#9ba1b7;
+  position:absolute;
+  width:30vw;
+  margin-top:20vh;
+  margin-left:70vw;
+}
+#introtext{
+  width:35vw;
+  margin-left: 10%;
+  background-color:#fff;
+  opacity: .9;
+  padding:25px;
+  margin-top:70vh;
+  border-radius: 15px;
+  h1,h2{
+    text-align:center;
+  }
+  img{
+    width:100%;
+    height:auto;
+  }
+}
 #spread-rouse{
     background-image: url('/issues/paperology/marbledpaper.png');
     background-size: 100% auto;
