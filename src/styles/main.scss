@@ -183,7 +183,20 @@ img {
   right: 0;
   z-index:1500;
 }
-
+.pink{
+  color: #ffccff;
+}
+#home{
+  position:absolute;
+  bottom:20px;
+  right:48vw;
+  z-index:1000;
+  background-color: #f0f;
+  color: #fff;
+  text-decoration:none;
+  padding:3px;
+  border-radius: 2px;
+}
 #pages-menu {
   ul {
     height:43px;
@@ -211,7 +224,7 @@ img {
 }
 .popout{
   text-align:center;
-  padding:30px 30px 30px 30px;
+  padding:30px 30px 10px 30px;
   color:rgb(60, 60, 60);
   line-height: 1.3em;
 }
@@ -235,6 +248,8 @@ img {
     width:90%;
     margin-left:auto;
     margin-right:auto;
+    padding-top:10px;
+    padding-bottom:10px;
   }
   p{
     padding:15px 25px 0px 25px;
@@ -250,7 +265,7 @@ img {
     text-decoration:none;
   }
   a:hover{
-    font-weight:bold;
+    border-bottom: 1px dotted #f0f;
   }
 }
 .fixed{
@@ -269,6 +284,14 @@ img {
 }
 em{
   border-bottom: 2px dotted #f0f;
+}
+i{
+  display: inline-block;
+  -webkit-transform: skewX(-15deg);
+     -moz-transform: skewX(-15deg);
+      -ms-transform: skewX(-15deg);
+       -o-transform: skewX(-15deg);
+          transform: skewX(-15deg);
 }
 video{
   z-index:500;

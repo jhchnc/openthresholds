@@ -231,9 +231,12 @@ class Contents extends Component {
 
         return (
             <>
+
                 <div className="turn-pages">
                     <a className="bi bi-chevron-left" onClick={() => this.navigatePage('prev')}></a>
                     <a className="bi bi-chevron-right" onClick={() => this.navigatePage('next')}></a>
+                    <a href="https://paperology.openthresholds.org" id="home">about</a>
+
                 </div>
 
                 <div className="spreads">
