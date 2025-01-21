@@ -59,36 +59,6 @@ class Spread extends Component {
     }
 }
 
-// EDIT: RECODED THIS FUNCTION TO WORK WITH THE NEW NAVIGATION SYSTEM.
-// Now uses the navigation array to determine the correct slug for the active position so the active thumbnail corresponds to the current page.
-function setActivePostion(left) {
-    const issue = this.props.table_of_contents["issues"].filter(issue => issue["slug"] == this.props.slug)[0]
-    const navigation = issue["navigation"]
-    let current_nav = document.getElementsByClassName("nav-item active")[0]
-    if (current_nav) {
-        current_nav.classList.remove('active')
-    }
-    let position = Math.abs(left) / 100
-    let slug = navigation[position]
-    let link = document.getElementById("nav-item-" + slug)
-    if (link) {
-        link.classList.add("active")
-    }
-}
-
-function getCurrentPostion(page_slug, spreads) {
-    let positions = spreads.map((page, i) => {
-        if (page.slug == page_slug) {
-            return i
-        }
-        return null
-    })
-    let position = positions.filter((p, i) => {
-        return p != null
-    })
-    return position[0]
-} 
-
 class Contents extends Component {
     constructor(props) {
         super(props);
@@ -233,8 +203,12 @@ class Contents extends Component {
             <>
 
                 <div className="turn-pages">
-                    <a className="bi bi-chevron-left" onClick={() => this.navigatePage('prev')}></a>
-                    <a className="bi bi-chevron-right" onClick={() => this.navigatePage('next')}></a>
+                    {this.state.currentPosition > 0 && 
+                        <a className="bi bi-chevron-left" onClick={() => this.navigatePage('prev')}></a>
+                    }
+                    {this.state.currentPosition < this.articleOrder.length - 1 && 
+                        <a className="bi bi-chevron-right" onClick={() => this.navigatePage('next')}></a>
+                    }
                     <a href="https://paperology.openthresholds.org" id="home">about</a>
 
                 </div>
